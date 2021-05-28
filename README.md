@@ -5,3 +5,4 @@ React Shopping cart
 - create product component filter : done
 - cart component : Done
 - checkout form : Done
+- add animation : done
