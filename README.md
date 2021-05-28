@@ -4,3 +4,4 @@ React Shopping cart
 - create product component : done
 - create product component filter : done
 - cart component : Done
+- checkout form : Done
