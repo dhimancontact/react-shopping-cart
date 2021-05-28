@@ -35,7 +35,7 @@ class App extends Component {
     });
   };
 
-  removeCart = (product) => {
+  removeCartItem = (product) => {
     const cartItems = this.state.cartItems.slice();
     this.setState({
       cartItems: cartItems.filter((x) => x._id !== product._id),
@@ -99,10 +99,12 @@ class App extends Component {
               ></Products>
             </div>
             <div className="sidebar">
-              <Cart
-                cartItems={this.state.cartItems}
-                removeCart={this.removeCart}
-              ></Cart>
+              {
+                <Cart
+                  cartItems={this.state.cartItems}
+                  removeCartItem={this.removeCartItem}
+                ></Cart>
+              }
             </div>
           </div>
         </main>

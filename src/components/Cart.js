@@ -25,7 +25,7 @@ export default class Cart extends Component {
                   {formatCurrency(item.price)} X {item.count}{" "}
                   <button
                     className="button"
-                    onClick={this.props.removeCart(item)}
+                    onClick={() => this.props.removeCartItem(item)}
                   >
                     Remove
                   </button>
@@ -34,6 +34,19 @@ export default class Cart extends Component {
             ))}
           </ul>
         </div>
+        {cartItems.length !== 0 && (
+          <div className="cart">
+            <div className="total">
+              <div>
+                Total:{" "}
+                {formatCurrency(
+                  cartItems.reduce((a, c) => a + c.price * c.count, 0)
+                )}
+              </div>
+              <button className="button primary">Proceed</button>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
