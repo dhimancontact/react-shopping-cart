@@ -5,6 +5,7 @@ import Zoom from "react-reveal/Zoom";
 import formatCurrency from "../util/util";
 import { connect } from "react-redux";
 import { fetchProducts } from "../actions/productActions";
+import { addToCart } from "../actions/cartActions";
 
 class Products extends Component {
   constructor(props) {
@@ -114,4 +115,5 @@ function mapStateToProps(state) {
 // export default connect(mapStateToProps, mapDispatchToProps)(Products);
 export default connect(mapStateToProps, {
   fetchProducts,
+  addToCart,
 })(Products);
