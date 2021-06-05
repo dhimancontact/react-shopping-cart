@@ -8,86 +8,6 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      products: data.products,
-      cartItems: localStorage.getItem("cartItems")
-        ? JSON.parse(localStorage.getItem("cartItems"))
-        : [],
-    };
-  }
-
-  addToCart = (product) => {
-    const cartItems = this.state.cartItems.slice();
-    let alreadyInCart = false;
-    cartItems.forEach((item) => {
-      if (item._id === product._id) {
-        item.count++;
-        alreadyInCart = true;
-      }
-    });
-
-    if (!alreadyInCart) {
-      cartItems.push({ ...product, count: 1 });
-    }
-
-    this.setState({
-      cartItems,
-    });
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  };
-
-  removeCartItem = (product) => {
-    const cartItems = this.state.cartItems.slice();
-    this.setState({
-      cartItems: cartItems.filter((x) => x._id !== product._id),
-    });
-    localStorage.setItem(
-      "cartItems",
-      JSON.stringify(cartItems.filter((x) => x._id !== product._id))
-    );
-  };
-
-  createOrder = (order) => {
-    alert("New to save order for " + order.name);
-  };
-
-  // sortProducts = (event) => {
-  //   let sort = event.target.value;
-
-  //   this.setState({
-  //     size: data.size,
-  //     sorts: sort,
-  //     products: this.state.products
-  //       .slice()
-  //       .sort((a, b) =>
-  //         sort === "lowest"
-  //           ? a.price > b.price
-  //             ? 1
-  //             : -1
-  //           : sort === "highest"
-  //           ? a.price < b.price
-  //             ? 1
-  //             : -1
-  //           : a._id > b._id
-  //           ? 1
-  //           : -1
-  //       ),
-  //   });
-  // };
-  // filterProducts = (event) => {
-  //   if (event.target.value === "") {
-  //     this.setState({ size: event.target.value, products: data.products });
-  //   }
-  //   this.setState({
-  //     size: event.target.value,
-  //     products: data.products.filter(
-  //       (product) => product.availableSizes.indexOf(event.target.value) >= 0
-  //     ),
-  //   });
-  // };
-
   render() {
     return (
       <Provider store={store}>
@@ -99,29 +19,9 @@ class App extends Component {
             <div className="content">
               <div className="main">
                 <Filter></Filter>
-                {/* <Filter
-                  count={this.state.products.length}
-                  size={this.state.size}
-                  sorts={this.state.sorts}
-                  filterProducts={this.filterProducts}
-                  sortProducts={this.sortProducts}
-                ></Filter> */}
-                {/* <Products
-                  products={this.state.products}
-                  addToCart={this.addToCart}
-                ></Products> */}
-
-                <Products addToCart={this.addToCart}></Products>
+                <Products></Products>
               </div>
-              <div className="sidebar">
-                {
-                  <Cart
-                    cartItems={this.state.cartItems}
-                    removeCartItem={this.removeCartItem}
-                    createOrder={this.createOrder}
-                  ></Cart>
-                }
-              </div>
+              <div className="sidebar">{<Cart></Cart>}</div>
             </div>
           </main>
           <footer>All right is researved.</footer>
