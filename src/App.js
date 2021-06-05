@@ -15,8 +15,6 @@ class App extends Component {
       cartItems: localStorage.getItem("cartItems")
         ? JSON.parse(localStorage.getItem("cartItems"))
         : [],
-      size: "",
-      sorts: "",
     };
   }
 
@@ -55,40 +53,40 @@ class App extends Component {
     alert("New to save order for " + order.name);
   };
 
-  sortProducts = (event) => {
-    let sort = event.target.value;
+  // sortProducts = (event) => {
+  //   let sort = event.target.value;
 
-    this.setState({
-      size: data.size,
-      sorts: sort,
-      products: this.state.products
-        .slice()
-        .sort((a, b) =>
-          sort === "lowest"
-            ? a.price > b.price
-              ? 1
-              : -1
-            : sort === "highest"
-            ? a.price < b.price
-              ? 1
-              : -1
-            : a._id > b._id
-            ? 1
-            : -1
-        ),
-    });
-  };
-  filterProducts = (event) => {
-    if (event.target.value === "") {
-      this.setState({ size: event.target.value, products: data.products });
-    }
-    this.setState({
-      size: event.target.value,
-      products: data.products.filter(
-        (product) => product.availableSizes.indexOf(event.target.value) >= 0
-      ),
-    });
-  };
+  //   this.setState({
+  //     size: data.size,
+  //     sorts: sort,
+  //     products: this.state.products
+  //       .slice()
+  //       .sort((a, b) =>
+  //         sort === "lowest"
+  //           ? a.price > b.price
+  //             ? 1
+  //             : -1
+  //           : sort === "highest"
+  //           ? a.price < b.price
+  //             ? 1
+  //             : -1
+  //           : a._id > b._id
+  //           ? 1
+  //           : -1
+  //       ),
+  //   });
+  // };
+  // filterProducts = (event) => {
+  //   if (event.target.value === "") {
+  //     this.setState({ size: event.target.value, products: data.products });
+  //   }
+  //   this.setState({
+  //     size: event.target.value,
+  //     products: data.products.filter(
+  //       (product) => product.availableSizes.indexOf(event.target.value) >= 0
+  //     ),
+  //   });
+  // };
 
   render() {
     return (
@@ -100,13 +98,14 @@ class App extends Component {
           <main>
             <div className="content">
               <div className="main">
-                <Filter
+                <Filter></Filter>
+                {/* <Filter
                   count={this.state.products.length}
                   size={this.state.size}
                   sorts={this.state.sorts}
                   filterProducts={this.filterProducts}
                   sortProducts={this.sortProducts}
-                ></Filter>
+                ></Filter> */}
                 {/* <Products
                   products={this.state.products}
                   addToCart={this.addToCart}
