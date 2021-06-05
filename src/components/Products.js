@@ -104,7 +104,7 @@ class Products extends Component {
 }
 
 function mapStateToProps(state) {
-  return { products: state.products.items, loading: state.loading };
+  return { products: state.products.filterItems, loading: state.loading };
 }
 
 // function mapDispatchToProps(dispatch) {
